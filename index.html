@@ -27,25 +27,28 @@
       </div>
 
       <!-- Header -->
-      <header class="relative z-10 flex items-center justify-center pt-8 px-4">
+      <header class="sticky top-0 z-30 flex items-center justify-center px-4 py-3 bg-isej-navy/60 backdrop-blur-lg border-b border-white/[0.08]">
         <div class="flex items-center gap-3">
           <div class="relative">
-            <div class="absolute inset-0 bg-isej-sky/25 rounded-2xl blur-lg"></div>
+            <div class="absolute inset-0 bg-isej-sky/25 rounded-xl blur-md"></div>
             <!-- LOGO: logo oficial de ISEJ (public/assets/logo_isej.png) -->
             <img
               src="/assets/logo_isej.png"
               alt="ISEJ"
-              class="relative h-14 w-14 rounded-2xl shadow-lg bg-white p-1.5 object-contain"
+              class="relative h-10 w-10 rounded-xl shadow-md bg-white p-1 object-contain"
               onerror="this.style.display='none'"
             />
           </div>
-          <span class="font-display text-xl sm:text-2xl font-extrabold tracking-wide">ISEJ</span>
+          <div class="flex flex-col leading-none">
+            <span class="font-display text-base sm:text-lg font-extrabold tracking-wide">ISEJ</span>
+            <span class="text-[10px] sm:text-[11px] font-medium tracking-wide text-white/50">Tzedaká Digital</span>
+          </div>
         </div>
       </header>
 
       <!-- Hero -->
       <main class="relative z-10 flex-1 flex flex-col items-center px-4 pb-16">
-        <section class="text-center max-w-xl mt-4 mb-0 animate-pop-in">
+        <section class="text-center max-w-xl mt-8 mb-0 animate-pop-in">
           <h1 class="font-display text-xl sm:text-3xl font-bold leading-tight text-white drop-shadow">
             Suma tu impacto en la comunidad,
             <span class="text-isej-sky">de forma simple y en cualquier momento.</span>
@@ -157,6 +160,7 @@
               class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="500"
               data-url="https://mpago.la/1z1jJzT"
+              aria-label="Donar 500 pesos mediante Mercado Pago"
             >
               <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$500</span>
               <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
@@ -167,6 +171,7 @@
               class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="1.000"
               data-url="https://mpago.la/2eaercD"
+              aria-label="Donar 1000 pesos mediante Mercado Pago"
             >
               <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$1.000</span>
               <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
@@ -177,6 +182,7 @@
               class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="2.000"
               data-url="https://mpago.la/1hAk8uu"
+              aria-label="Donar 2000 pesos mediante Mercado Pago"
             >
               <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$2.000</span>
               <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
@@ -187,6 +193,7 @@
               class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="5.000"
               data-url="https://mpago.la/1psWXZf"
+              aria-label="Donar 5000 pesos mediante Mercado Pago"
             >
               <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$5.000</span>
               <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
@@ -197,6 +204,7 @@
               class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="10.000"
               data-url="https://mpago.la/1ZHFDPq"
+              aria-label="Donar 10000 pesos mediante Mercado Pago"
             >
               <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$10.000</span>
               <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
@@ -207,6 +215,7 @@
               class="donate-btn group relative overflow-hidden rounded-2xl bg-gradient-to-br from-isej-red to-isej-reddark text-white px-4 py-6 flex flex-col items-center justify-center gap-1 shadow-[0_8px_30px_rgba(227,30,37,0.3),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 ease-out hover:shadow-[0_14px_36px_rgba(227,30,37,0.4),inset_0_1px_0_rgba(255,255,255,0.3)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="otro"
               data-url="https://link.mercadopago.com.ar/isej770"
+              aria-label="Donar un monto a elección mediante Mercado Pago"
             >
               <span class="relative z-10 font-display text-lg sm:text-xl font-extrabold">Otro monto</span>
               <span class="relative z-10 text-[11px] text-white/80">Elegí vos cuánto</span>
@@ -214,13 +223,26 @@
           </div>
         </section>
 
-        <p class="mt-10 text-center text-xs text-white/40 max-w-sm">
-          Los pagos se procesan de forma segura a través de Mercado Pago. Vas a ser redirigido para completar tu donación.
-        </p>
+        <!-- Trust strip -->
+        <div class="mt-10 flex flex-col items-center gap-3">
+          <div class="flex flex-wrap items-center justify-center gap-x-1.5 gap-y-1 rounded-xl bg-white/[0.05] border border-white/10 px-4 py-2.5 text-center">
+            <svg viewBox="0 0 24 24" class="h-4 w-4 text-isej-sky shrink-0" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 3l7 3v5c0 4.5-3 8.5-7 10-4-1.5-7-5.5-7-10V6l7-3z" />
+              <path d="M9.5 12l1.8 1.8L14.5 10" />
+            </svg>
+            <span class="text-xs font-medium text-white/70">Pago 100% seguro, procesado por</span>
+            <span class="text-xs font-bold whitespace-nowrap" style="color: #009ee3">Mercado Pago</span>
+          </div>
+          <p class="text-center text-xs text-white/40 max-w-sm">
+            Vas a ser redirigido para completar tu donación. No almacenamos datos de tu tarjeta ni de tu cuenta.
+          </p>
+        </div>
       </main>
 
-      <footer class="relative z-10 text-center pb-6 text-xs text-white/40">
-        © <span id="year"></span> ISEJ · Tzedaká Digital
+      <footer class="relative z-10 border-t border-white/[0.08] pt-5 pb-6 px-4">
+        <p class="text-center text-xs text-white/40">
+          © <span id="year"></span> ISEJ · Instituto Superior de Estudios Judaicos — Tzedaká Digital
+        </p>
       </footer>
     </div>
   </body>
