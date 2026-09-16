@@ -6,11 +6,11 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const coinStage = document.getElementById("coin-stage");
 const pushke = document.getElementById("pushke");
 
-// Total time from click to redirect: ~3s of falling + settling, per spec.
+// Coin fall/settle timing (visual + sound feedback only — see the click
+// handler below for why the Mercado Pago redirect no longer waits on this).
 const FALL_DURATION = 2900;
 const IMPACT_TIME = Math.round(FALL_DURATION * 0.8);
 const BOUNCE_TICK_TIME = IMPACT_TIME + 160;
-const REDIRECT_DELAY = 3000;
 
 let coinsDropped = 0;
 
@@ -170,10 +170,13 @@ document.querySelectorAll(".donate-btn").forEach((btn) => {
     const url = btn.dataset.url;
     if (!url) return;
 
-    // Open the tab synchronously (within the click's user-gesture window),
-    // then navigate it once the fall finishes — deferring window.open()
-    // itself causes browsers like Safari to block it as a popup.
-    const newTab = window.open("", "_blank", "noopener,noreferrer");
+    // Open Mercado Pago immediately, synchronously inside the click handler.
+    // Browsers (Safari/iOS especially) only allow window.open() to bypass the
+    // popup blocker while it's still tied to the original user gesture — a
+    // delayed open/navigate a few seconds later gets silently blocked, which
+    // is why links previously failed. The coin animation + sound still play
+    // out in this tab as feedback; they just no longer gate the redirect.
+    window.open(url, "_blank", "noopener,noreferrer");
 
     try {
       playFallSound(FALL_DURATION / 1000);
@@ -183,14 +186,5 @@ document.querySelectorAll(".donate-btn").forEach((btn) => {
       console.warn("No se pudo reproducir el sonido de la moneda:", err);
     }
     dropCoin();
-
-    window.setTimeout(() => {
-      if (newTab) {
-        newTab.location.href = url;
-      } else {
-        // Popup was blocked (or user has pop-ups disabled): fall back to a direct navigation.
-        window.open(url, "_blank", "noopener,noreferrer");
-      }
-    }, REDIRECT_DELAY);
   });
 });
