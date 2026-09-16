@@ -186,6 +186,12 @@ document.querySelectorAll(".donate-btn").forEach((btn) => {
     // gesture and gets silently blocked by Safari/iOS (that's what broke the
     // links before). Top-level navigation of the current tab is never
     // blocked, so this is the only way to reliably wait for the animation.
+    //
+    // These mpago.la / link.mercadopago.com.ar URLs are Mercado Pago's own
+    // universal/app links: iOS and Android already intercept navigation to
+    // them at the OS level and hand off to the Mercado Pago app when it's
+    // installed, falling back to the mobile web checkout otherwise — no
+    // custom app-scheme or user-agent detection needed on our side.
     window.setTimeout(() => {
       window.location.href = url;
     }, REDIRECT_DELAY);

@@ -15,7 +15,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ["Poppins", "system-ui", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        display: ["'Plus Jakarta Sans'", "Inter", "system-ui", "sans-serif"],
       },
       keyframes: {
         "box-wobble": {

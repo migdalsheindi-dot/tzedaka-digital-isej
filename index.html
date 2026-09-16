@@ -12,26 +12,25 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <script type="module" crossorigin src="/src/main.js"></script>
     <link rel="stylesheet" href="/src/style.css" />
   </head>
-  <body class="min-h-screen bg-gradient-to-b from-isej-skydark via-isej-blue to-isej-navy text-white font-sans antialiased overflow-x-hidden">
+  <body class="min-h-screen bg-gradient-to-b from-isej-blue via-[#0f2c52] to-isej-navy text-white font-sans antialiased overflow-x-hidden">
     <div class="relative min-h-screen flex flex-col">
-      <!-- Decorative background glow -->
+      <!-- Decorative background glow: restrained, institutional — blues/celestes only -->
       <div class="pointer-events-none absolute inset-0 overflow-hidden">
-        <div class="absolute -top-24 -left-24 w-72 h-72 bg-isej-sky/30 rounded-full blur-3xl"></div>
-        <div class="absolute top-1/3 -right-24 w-96 h-96 bg-isej-white/15 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 left-1/3 w-80 h-80 bg-isej-red/10 rounded-full blur-3xl"></div>
+        <div class="absolute -top-32 -left-24 w-96 h-96 bg-isej-sky/15 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-0 -right-24 w-[28rem] h-[28rem] bg-isej-white/[0.06] rounded-full blur-3xl"></div>
       </div>
 
       <!-- Header -->
       <header class="relative z-10 flex items-center justify-center pt-8 px-4">
         <div class="flex items-center gap-3">
           <div class="relative">
-            <div class="absolute inset-0 bg-isej-red/30 rounded-2xl blur-lg"></div>
+            <div class="absolute inset-0 bg-isej-sky/25 rounded-2xl blur-lg"></div>
             <!-- LOGO: logo oficial de ISEJ (public/assets/logo_isej.png) -->
             <img
               src="/assets/logo_isej.png"
@@ -40,14 +39,14 @@
               onerror="this.style.display='none'"
             />
           </div>
-          <span class="text-xl sm:text-2xl font-extrabold tracking-wide">ISEJ</span>
+          <span class="font-display text-xl sm:text-2xl font-extrabold tracking-wide">ISEJ</span>
         </div>
       </header>
 
       <!-- Hero -->
       <main class="relative z-10 flex-1 flex flex-col items-center px-4 pb-16">
         <section class="text-center max-w-xl mt-4 mb-0 animate-pop-in">
-          <h1 class="text-xl sm:text-3xl font-bold leading-tight text-white drop-shadow">
+          <h1 class="font-display text-xl sm:text-3xl font-bold leading-tight text-white drop-shadow">
             Suma tu impacto en la comunidad,
             <span class="text-isej-sky">de forma simple y en cualquier momento.</span>
           </h1>
@@ -69,11 +68,11 @@
           <svg
             id="pushke"
             viewBox="0 0 220 260"
-            class="relative w-full h-auto drop-shadow-2xl transition-transform"
+            class="relative w-full h-auto drop-shadow-xl transition-transform"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <!-- ground shadow -->
-            <ellipse cx="110" cy="240" rx="82" ry="10" fill="black" opacity="0.3" />
+            <!-- ground shadow, softly blurred so it doesn't read as a flat/harsh shape -->
+            <ellipse cx="110" cy="240" rx="76" ry="9" fill="black" opacity="0.22" filter="url(#softBlur)" />
 
             <!-- base plinth (opaque) -->
             <rect x="30" y="206" width="160" height="22" rx="4" fill="url(#navyShade)" />
@@ -106,7 +105,7 @@
               x="110"
               y="137"
               text-anchor="middle"
-              font-family="Poppins, Arial, sans-serif"
+              font-family="'Plus Jakarta Sans', Poppins, Arial, sans-serif"
               font-size="22"
               font-weight="800"
               letter-spacing="0.5"
@@ -137,6 +136,9 @@
               <clipPath id="boxClip">
                 <rect x="36" y="84" width="148" height="124" rx="10" />
               </clipPath>
+              <filter id="softBlur" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3.5" />
+              </filter>
             </defs>
           </svg>
         </section>
@@ -152,68 +154,68 @@
           <div id="donation-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
             <button
               type="button"
-              class="donate-btn group relative rounded-2xl bg-gradient-to-br from-isej-blue/70 to-isej-navy/90 border border-isej-sky/30 backdrop-blur-sm px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-150 hover:border-isej-sky/70 hover:shadow-[0_0_22px_rgba(93,173,226,0.4)] hover:-translate-y-1 active:scale-95"
+              class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="500"
               data-url="https://mpago.la/1z1jJzT"
             >
-              <span class="text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.55)]">$500</span>
-              <span class="text-[11px] text-white/60">Donar ahora</span>
+              <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$500</span>
+              <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
             </button>
 
             <button
               type="button"
-              class="donate-btn group relative rounded-2xl bg-gradient-to-br from-isej-blue/70 to-isej-navy/90 border border-isej-sky/30 backdrop-blur-sm px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-150 hover:border-isej-sky/70 hover:shadow-[0_0_22px_rgba(93,173,226,0.4)] hover:-translate-y-1 active:scale-95"
+              class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="1.000"
               data-url="https://mpago.la/2eaercD"
             >
-              <span class="text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.55)]">$1.000</span>
-              <span class="text-[11px] text-white/60">Donar ahora</span>
+              <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$1.000</span>
+              <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
             </button>
 
             <button
               type="button"
-              class="donate-btn group relative rounded-2xl bg-gradient-to-br from-isej-blue/70 to-isej-navy/90 border border-isej-sky/30 backdrop-blur-sm px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-150 hover:border-isej-sky/70 hover:shadow-[0_0_22px_rgba(93,173,226,0.4)] hover:-translate-y-1 active:scale-95"
+              class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="2.000"
               data-url="https://mpago.la/1hAk8uu"
             >
-              <span class="text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.55)]">$2.000</span>
-              <span class="text-[11px] text-white/60">Donar ahora</span>
+              <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$2.000</span>
+              <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
             </button>
 
             <button
               type="button"
-              class="donate-btn group relative rounded-2xl bg-gradient-to-br from-isej-blue/70 to-isej-navy/90 border border-isej-sky/30 backdrop-blur-sm px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-150 hover:border-isej-sky/70 hover:shadow-[0_0_22px_rgba(93,173,226,0.4)] hover:-translate-y-1 active:scale-95"
+              class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="5.000"
               data-url="https://mpago.la/1psWXZf"
             >
-              <span class="text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.55)]">$5.000</span>
-              <span class="text-[11px] text-white/60">Donar ahora</span>
+              <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$5.000</span>
+              <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
             </button>
 
             <button
               type="button"
-              class="donate-btn group relative rounded-2xl bg-gradient-to-br from-isej-blue/70 to-isej-navy/90 border border-isej-sky/30 backdrop-blur-sm px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-150 hover:border-isej-sky/70 hover:shadow-[0_0_22px_rgba(93,173,226,0.4)] hover:-translate-y-1 active:scale-95"
+              class="donate-btn group relative overflow-hidden rounded-2xl bg-white/[0.06] backdrop-blur-xl border border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.15)] px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-300 ease-out hover:bg-white/[0.1] hover:border-isej-sky/50 hover:shadow-[0_14px_36px_rgba(93,173,226,0.28),inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="10.000"
               data-url="https://mpago.la/1ZHFDPq"
             >
-              <span class="text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.55)]">$10.000</span>
-              <span class="text-[11px] text-white/60">Donar ahora</span>
+              <span class="relative z-10 font-display text-2xl sm:text-3xl font-extrabold text-isej-sky drop-shadow-[0_0_10px_rgba(93,173,226,0.45)]">$10.000</span>
+              <span class="relative z-10 text-[11px] text-white/60">Donar ahora</span>
             </button>
 
             <button
               type="button"
-              class="donate-btn group relative rounded-2xl bg-gradient-to-br from-isej-red to-isej-reddark text-white px-4 py-6 flex flex-col items-center justify-center gap-1 transition-all duration-150 hover:-translate-y-1 hover:shadow-xl active:scale-95 shadow-lg"
+              class="donate-btn group relative overflow-hidden rounded-2xl bg-gradient-to-br from-isej-red to-isej-reddark text-white px-4 py-6 flex flex-col items-center justify-center gap-1 shadow-[0_8px_30px_rgba(227,30,37,0.3),inset_0_1px_0_rgba(255,255,255,0.25)] transition-all duration-300 ease-out hover:shadow-[0_14px_36px_rgba(227,30,37,0.4),inset_0_1px_0_rgba(255,255,255,0.3)] hover:-translate-y-1.5 active:translate-y-0 active:scale-[0.97] active:duration-100"
               data-amount="otro"
               data-url="https://link.mercadopago.com.ar/isej770"
             >
-              <span class="text-lg sm:text-xl font-extrabold">Otro monto</span>
-              <span class="text-[11px] text-white/80">Elegí vos cuánto</span>
+              <span class="relative z-10 font-display text-lg sm:text-xl font-extrabold">Otro monto</span>
+              <span class="relative z-10 text-[11px] text-white/80">Elegí vos cuánto</span>
             </button>
           </div>
         </section>
 
         <p class="mt-10 text-center text-xs text-white/40 max-w-sm">
-          Los pagos se procesan de forma segura a través de Mercado Pago. Se abrirá una nueva pestaña para completar tu donación.
+          Los pagos se procesan de forma segura a través de Mercado Pago. Vas a ser redirigido para completar tu donación.
         </p>
       </main>
 
