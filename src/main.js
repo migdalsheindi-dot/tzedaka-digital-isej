@@ -6,11 +6,13 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
 const coinStage = document.getElementById("coin-stage");
 const pushke = document.getElementById("pushke");
 
-// Coin fall/settle timing (visual + sound feedback only — see the click
-// handler below for why the Mercado Pago redirect no longer waits on this).
+// Coin fall/settle timing. The Mercado Pago redirect waits for this to
+// finish — see the click handler below for why it navigates the current
+// tab instead of opening a new one.
 const FALL_DURATION = 2900;
 const IMPACT_TIME = Math.round(FALL_DURATION * 0.8);
 const BOUNCE_TICK_TIME = IMPACT_TIME + 160;
+const REDIRECT_DELAY = FALL_DURATION + 250;
 
 let coinsDropped = 0;
 
@@ -170,14 +172,6 @@ document.querySelectorAll(".donate-btn").forEach((btn) => {
     const url = btn.dataset.url;
     if (!url) return;
 
-    // Open Mercado Pago immediately, synchronously inside the click handler.
-    // Browsers (Safari/iOS especially) only allow window.open() to bypass the
-    // popup blocker while it's still tied to the original user gesture — a
-    // delayed open/navigate a few seconds later gets silently blocked, which
-    // is why links previously failed. The coin animation + sound still play
-    // out in this tab as feedback; they just no longer gate the redirect.
-    window.open(url, "_blank", "noopener,noreferrer");
-
     try {
       playFallSound(FALL_DURATION / 1000);
       playImpactSound(IMPACT_TIME / 1000, { intensity: 1 });
@@ -186,5 +180,14 @@ document.querySelectorAll(".donate-btn").forEach((btn) => {
       console.warn("No se pudo reproducir el sonido de la moneda:", err);
     }
     dropCoin();
+
+    // Navigate this same tab once the coin lands — NOT window.open(), and NOT
+    // a new tab. A new tab opened this long after the click loses the user
+    // gesture and gets silently blocked by Safari/iOS (that's what broke the
+    // links before). Top-level navigation of the current tab is never
+    // blocked, so this is the only way to reliably wait for the animation.
+    window.setTimeout(() => {
+      window.location.href = url;
+    }, REDIRECT_DELAY);
   });
 });

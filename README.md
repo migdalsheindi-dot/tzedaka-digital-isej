@@ -64,7 +64,7 @@ Podés subir el contenido de `dist/` a cualquier hosting estático (Netlify, Ver
 - **Logo institucional:** `public/assets/logo_isej.png` es el logo oficial de ISEJ (bajado de isej.com, PNG transparente 500×500). Si la institución actualiza su branding, reemplazá el archivo manteniendo el mismo nombre (así no hay que tocar `index.html`).
 - **Montos y links de Mercado Pago:** están definidos como `data-amount` / `data-url` en los botones `.donate-btn` dentro de `index.html`.
 - **Colores:** definidos en `tailwind.config.js` — base institucional en `isej.navy`, `isej.blue`, `isej.sky`, `isej.skydark`, `isej.white` (azul marino, celeste y blanco), con `isej.red` / `isej.reddark` como acento puntual tomado del logo (usado en el botón "Otro monto" y el resplandor detrás del logo).
-- **Pushke:** el dibujo de la caja de Tzedaká es un SVG inline en `index.html` (id `pushke`), grande y protagónica, con **cuerpo de vidrio/acrílico transparente** para ver el interior, panel frosted con Estrella de David y el texto **"TZEDAKÁ"** en español. La ranura (id `coin-slot`) y la zona interior de acumulación (id `interior-bounds`, invisible) son los puntos de referencia reales que usa `main.js` para calcular dónde cae y dónde se asienta cada moneda — la animación se recalcula en base a su posición renderizada, así que sigue alineada sin importar el tamaño de pantalla.
+- **Pushke:** el dibujo de la caja de Tzedaká es un SVG inline en `index.html` (id `pushke`), grande y protagónica, con **cuerpo de vidrio/acrílico transparente** para ver el interior y panel frosted con el texto **"TZEDAKÁ"** en español. La ranura (id `coin-slot`) y la zona interior de acumulación (id `interior-bounds`, invisible) son los puntos de referencia reales que usa `main.js` para calcular dónde cae y dónde se asienta cada moneda — la animación se recalcula en base a su posición renderizada, así que sigue alineada sin importar el tamaño de pantalla.
 - **Acumulación de monedas:** cada donación agrega una moneda que se queda dentro de la Pushke (no se elimina del DOM); las siguientes monedas se apilan visualmente más arriba dentro de la zona interior. El contador vive en memoria (`coinsDropped` en `main.js`) y se reinicia al recargar la página — no usa `localStorage`.
 
 ## Comportamiento al donar
@@ -73,6 +73,8 @@ Al hacer clic en un monto:
 
 1. Se sintetiza un sonido de "caída" (whoosh filtrado) durante todo el trayecto, más un clink metálico de impacto y un pequeño rebote — todo con Web Audio API, sin archivos externos.
 2. La moneda cae durante ~3 segundos desde arriba, entra por la ranura y se asienta sobre las monedas ya donadas, con un pequeño rebote al aterrizar; la Pushke hace un "wobble" en el momento del impacto.
-3. Recién al cumplirse los ~3 segundos se abre una nueva pestaña con el link de Mercado Pago correspondiente.
+3. Recién al terminar esa animación (~3.15s), la página navega a Mercado Pago **en la misma pestaña**.
 
-Los tiempos están centralizados en constantes al inicio de `main.js` (`FALL_DURATION`, `IMPACT_TIME`, `REDIRECT_DELAY`) por si querés ajustarlos. La pestaña de Mercado Pago se abre de forma sincrónica al clic (antes del delay) para evitar que los navegadores —especialmente Safari/iOS— la bloqueen como pop-up.
+Los tiempos están centralizados en constantes al inicio de `main.js` (`FALL_DURATION`, `IMPACT_TIME`, `REDIRECT_DELAY`) por si querés ajustarlos.
+
+**Por qué la misma pestaña y no una nueva:** un `window.open()` disparado varios segundos después del clic pierde el "gesto de usuario" y los navegadores (sobre todo Safari/iOS) lo bloquean silenciosamente como pop-up — así fue como se rompieron los links la primera vez. Navegar la pestaña actual (`window.location.href`) es la única forma de esperar la animación y que el redirect funcione siempre, en cualquier dispositivo.
